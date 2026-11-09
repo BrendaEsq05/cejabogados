@@ -12,6 +12,11 @@ export const SITE = {
     lat: 25.543971,
     lng: -103.448055,
   },
+  hours: [
+    { days: 'Lunes a jueves', time: '10:00 – 18:30' },
+    { days: 'Viernes', time: '10:00 – 14:30' },
+    { days: 'Sábado y domingo', time: 'Cerrado' },
+  ],
   mapsQuery: 'Escobedo+46,+Segundo+de+Cobián+Centro,+Torreón,+Coahuila',
   social: {
     instagram:

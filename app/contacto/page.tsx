@@ -39,6 +39,19 @@ export default function ContactPage() {
                 Enviar mensaje
               </a>
             </p>
+
+            <div className="contact-hours">
+              <strong>🕒 Horario de atención</strong>
+              <ul>
+                {SITE.hours.map((item) => (
+                  <li key={item.days}>
+                    <span>{item.days}</span>
+                    <span>{item.time}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <a href="/cita" className="cta-button">
               Agenda tu consulta
             </a>

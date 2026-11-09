@@ -1,6 +1,7 @@
 import CallToAction from './components/CallToAction';
 import Hero from './components/Hero';
 import PracticeAreas from './components/PracticeAreas';
+import Team from './components/Team';
 import WhyChooseUs from './components/WhyChooseUs';
 
 export const metadata = {
@@ -14,6 +15,7 @@ export default function HomePage() {
     <section className="fade-in">
       <Hero />
       <PracticeAreas />
+      <Team />
       <CallToAction />
       <WhyChooseUs />
     </section>

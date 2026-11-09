@@ -42,6 +42,7 @@ export default function Footer() {
           <p>{SITE.address.line2}</p>
           <p>📞 {SITE.phoneDisplay}</p>
           <p>✉️ {SITE.email}</p>
+          <p>🕒 Lun–Jue 10:00–18:30 · Vie 10:00–14:30</p>
         </div>
 
         <div className="footer-socials">

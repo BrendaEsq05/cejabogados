@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -19,7 +20,14 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link href="/" className="navbar-logo" onClick={close}>
-        CEJ Abogados
+        <Image
+          src="/logo.png"
+          alt="CEJ Abogados"
+          width={168}
+          height={56}
+          className="navbar-logo-image"
+          priority
+        />
       </Link>
 
       <button
