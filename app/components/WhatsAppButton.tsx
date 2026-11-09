@@ -1,16 +1,19 @@
 'use client';
+
 import { usePathname } from 'next/navigation';
+
+const PHONE = '528719777977';
 
 export default function WhatsAppButton() {
   const pathname = usePathname();
-  const phone = '5214921953554'; // <-- CAMBIA por el número real
   const message =
-  pathname === '/contacto'
-    ? 'Hola, quiero más información.'
-    : pathname === '/cita'
-    ? 'Hola, quiero agendar una consulta.'
-    : 'Hola, me gustaría asesoría legal.';
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    pathname === '/contacto'
+      ? 'Hola, quiero más información.'
+      : pathname === '/cita'
+        ? 'Hola, quiero agendar una consulta.'
+        : 'Hola, me gustaría asesoría legal.';
+
+  const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

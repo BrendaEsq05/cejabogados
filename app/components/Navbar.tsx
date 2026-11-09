@@ -1,25 +1,53 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/areas', label: 'Áreas de práctica' },
+  { href: '/contacto', label: 'Contacto' },
+];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const close = () => setOpen(false);
+
   return (
     <nav className="navbar">
-      <div className="navbar-logo">CEJ Abogados</div>
+      <Link href="/" className="navbar-logo" onClick={close}>
+        CEJ Abogados
+      </Link>
 
-      <ul className="navbar-links">
-        <li>
-          <Link href="/">Inicio</Link>
-        </li>
+      <button
+        type="button"
+        className={`navbar-toggle${open ? ' is-open' : ''}`}
+        aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
 
+      <ul className={`navbar-links${open ? ' is-open' : ''}`}>
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={pathname === link.href ? 'is-active' : undefined}
+              onClick={close}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
         <li>
-          <Link href="/areas">Áreas de práctica</Link>
-        </li>
-
-        <li>
-          <Link href="/contacto">Contacto</Link>
-        </li>
-
-        <li>
-          <Link href="/cita" className="navbar-button">
+          <Link href="/cita" className="navbar-button" onClick={close}>
             Agenda tu consulta
           </Link>
         </li>

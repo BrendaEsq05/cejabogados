@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cejabogados.com'),
   title: {
     default: 'CEJ Abogados | Despacho Jurídico en Torreón',
     template: '%s | CEJ Abogados',
@@ -28,6 +29,17 @@ export const metadata: Metadata = {
     siteName: 'CEJ Abogados',
     locale: 'es_MX',
     type: 'website',
+    images: [
+      {
+        url: '/despacho.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'CEJ Abogados',
+      },
+    ],
+  },
+  alternates: {
+    canonical: '/',
   },
 };
 

@@ -1,5 +1,5 @@
 import CallToAction from './components/CallToAction';
-import Footer from './components/Footer';
+import Hero from './components/Hero';
 import PracticeAreas from './components/PracticeAreas';
 import WhyChooseUs from './components/WhyChooseUs';
 
@@ -11,28 +11,11 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <>
-      <section className="fade-in">
-
-        {/* HERO */}
-        <section className="hero">
-  <div className="hero-image">
-    <img src="/despacho.png" alt="Despacho jurídico" />
-  </div>
-</section>
-
-
-        {/* ÁREAS */}
-        <PracticeAreas />
-
-        {/* CTA */}
-        <CallToAction />
-
-        {/* WHY */}
-        <WhyChooseUs />
-
-    
-      </section>
-    </>
+    <section className="fade-in">
+      <Hero />
+      <PracticeAreas />
+      <CallToAction />
+      <WhyChooseUs />
+    </section>
   );
 }
