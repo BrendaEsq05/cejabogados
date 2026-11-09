@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
+import FloatingActions from './components/FloatingActions';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cejabogados.com'),
@@ -54,7 +54,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <WhatsAppButton />
+        <FloatingActions />
       </body>
     </html>
   );

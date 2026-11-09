@@ -1,4 +1,5 @@
 import CallToAction from './components/CallToAction';
+import FAQ from './components/FAQ';
 import Hero from './components/Hero';
 import PracticeAreas from './components/PracticeAreas';
 import Team from './components/Team';
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Team />
       <CallToAction />
       <WhyChooseUs />
+      <FAQ />
     </section>
   );
 }
