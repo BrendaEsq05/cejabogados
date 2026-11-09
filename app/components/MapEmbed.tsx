@@ -1,17 +1,18 @@
-export default function MapEmbed() {
-    return (
-      <a
-        href="https://www.google.com/maps/place/Consultores+en+Estrategia+Jur%C3%ADdica/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="map-wrapper"
-      >
-        <iframe
-          src="https://www.google.com/maps?q=Consultores+en+Estrategia+Jur%C3%ADdica&output=embed"
-          loading="lazy"
-        />
-      </a>
-    );
-  }
+import { mapsEmbedUrl, mapsSearchUrl } from '../lib/site';
 
-  
+export default function MapEmbed() {
+  return (
+    <a
+      href={mapsSearchUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="map-wrapper"
+    >
+      <iframe
+        src={mapsEmbedUrl}
+        loading="lazy"
+        title="Ubicación de CEJ Abogados"
+      />
+    </a>
+  );
+}

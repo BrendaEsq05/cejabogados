@@ -1,8 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-
-const PHONE = '528719777977';
+import { SITE } from '../lib/site';
 
 export default function WhatsAppButton() {
   const pathname = usePathname();
@@ -13,7 +12,7 @@ export default function WhatsAppButton() {
         ? 'Hola, quiero agendar una consulta.'
         : 'Hola, me gustaría asesoría legal.';
 
-  const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

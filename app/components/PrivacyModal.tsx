@@ -21,9 +21,10 @@ export default function PrivacyModal({ open, onClose }: PrivacyModalProps) {
         <h2>Aviso de Privacidad</h2>
 
         <p>
-          CEJ Abogados, con domicilio en Torreón, Coahuila, es responsable
-          del tratamiento de sus datos personales conforme a la Ley Federal
-          de Protección de Datos Personales en Posesión de los Particulares.
+          CEJ Abogados, con domicilio en Escobedo 46, Segundo de Cobián
+          Centro, 27000 Torreón, Coah., es responsable del tratamiento de
+          sus datos personales conforme a la Ley Federal de Protección de
+          Datos Personales en Posesión de los Particulares.
         </p>
 
         <p>

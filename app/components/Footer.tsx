@@ -1,33 +1,54 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Instagram, Linkedin } from 'lucide-react';
 import PrivacyModal from './PrivacyModal';
+import { SITE, mapsEmbedUrl, mapsSearchUrl } from '../lib/site';
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isContactPage = pathname === '/contacto';
   const [openPrivacy, setOpenPrivacy] = useState(false);
 
   return (
     <footer className="footer">
+      {!isContactPage && (
+        <a
+          href={mapsSearchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-map"
+          aria-label="Ver ubicación en Google Maps"
+        >
+          <iframe
+            src={mapsEmbedUrl}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación de CEJ Abogados"
+          />
+        </a>
+      )}
+
       <div className="footer-container">
         <div className="footer-brand">
-          <strong>CEJ Abogados</strong>
+          <strong>{SITE.name}</strong>
           <p>Defensa legal con ética, estrategia y resultados.</p>
         </div>
 
         <div className="footer-contact">
           <h4>Contacto</h4>
-          <p>📍 Av. Pdte. Carranza 68, Segundo piso, Oficina 2</p>
-          <p>Torreón, Coahuila</p>
-          <p>📞 +52 871 977 7977</p>
-          <p>✉️ contacto@cejabogados.com</p>
+          <p>📍 {SITE.address.line1}</p>
+          <p>{SITE.address.line2}</p>
+          <p>📞 {SITE.phoneDisplay}</p>
+          <p>✉️ {SITE.email}</p>
         </div>
 
         <div className="footer-socials">
           <h4>Síguenos</h4>
 
           <a
-            href="https://www.instagram.com/consultores_estrategajuridico?igsh=MXh1OXByZXh2NzRnaQ=="
+            href={SITE.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
@@ -37,7 +58,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/luis-heriberto-morales-ruiz-750483170"
+            href={SITE.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
@@ -49,7 +70,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} CEJ Abogados. Todos los derechos
+        © {new Date().getFullYear()} {SITE.name}. Todos los derechos
         reservados.
         <button
           type="button"
