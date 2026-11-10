@@ -369,11 +369,17 @@
 .team-featured-image {
   width: 100%;
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
   border-radius: 24px;
   display: block;
   object-fit: cover;
+  object-position: center top;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+}
+
+.team-avatar img {
+  object-position: center top;
 }
 
 .team-featured-caption {
