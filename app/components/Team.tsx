@@ -9,6 +9,7 @@ type Member = {
   name: string;
   areas: string[];
   services?: string[];
+  highlight?: string;
   image?: string;
   href?: string;
 };
@@ -40,6 +41,7 @@ const MEMBERS: Member[] = [
   {
     name: 'Diana Jáquez',
     areas: ['Penal', 'Familiar', 'Documentos jurídicos'],
+    highlight: 'Miembro activo de Rotary International',
     services: [
       'Asesoría y acompañamiento en asuntos penales',
       'Atención de asuntos familiares',
@@ -109,6 +111,9 @@ export default function Team() {
             <div className="team-featured-caption">
               <strong>{featured.name}</strong>
               <span>{featured.areas.join(' · ')}</span>
+              {featured.highlight ? (
+                <em className="team-highlight-inline">{featured.highlight}</em>
+              ) : null}
             </div>
 
             {featuredMembers.length > 1 ? (
@@ -151,6 +156,9 @@ export default function Team() {
 
             <div className="team-card-body">
               <h3>{member.name}</h3>
+              {member.highlight ? (
+                <p className="team-highlight">{member.highlight}</p>
+              ) : null}
               <div className="team-tags">
                 {member.areas.map((area) => (
                   <span key={area}>{area}</span>
