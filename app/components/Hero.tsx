@@ -4,21 +4,15 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-media" aria-hidden="true">
-        <Image
-          src="/despacho.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hero-media-image"
-        />
-      </div>
-
-      <div className="hero-overlay" />
-
       <div className="hero-content">
-        <p className="hero-brand">CEJ Abogados</p>
+        <Image
+          src="/logo1.png"
+          alt="CEJ Abogados"
+          width={480}
+          height={266}
+          priority
+          className="hero-logo"
+        />
         <h1>Defensa legal con ética, estrategia y resultados</h1>
         <p className="hero-lead">
           Despacho jurídico en Torreón especializado en derecho familiar,

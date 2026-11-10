@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/despacho.jpg',
+        url: '/logo1.png',
         width: 1200,
-        height: 800,
+        height: 666,
         alt: 'CEJ Abogados',
       },
     ],
