@@ -1273,54 +1273,101 @@
   margin-bottom: 60px;
 }
 
-/* GRID */
-.areas-grid {
+.areas-accordion {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 16px;
+  max-width: 960px;
 }
 
-/* CARD */
-.area-card {
-  background-color: #f9fafb;
-  padding: 32px;
-  border-radius: 16px;
+.area-accordion-item {
+  background: #f9fafb;
   border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.area-accordion-item.is-open {
+  border-color: #0b2c4d;
+  box-shadow: 0 16px 36px rgba(11, 44, 77, 0.08);
+  background: #ffffff;
+}
+
+.area-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  border: none;
+  background: transparent;
+  text-align: left;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.area-card h3 {
-  font-size: 20px;
-  color: #111827;
-  margin-bottom: 14px;
+.area-accordion-trigger h3 {
+  font-size: 1.25rem;
+  color: #0b2c4d;
+  margin: 0 0 10px;
 }
 
-.area-card p {
+.area-accordion-trigger p {
+  margin: 0;
   color: #6b7280;
   line-height: 1.6;
-  font-size: 15px;
+  font-size: 0.98rem;
 }
 
-/* HOVER */
-.area-card:hover {
-  transform: translateY(-8px);
-  border-color: #0b2c4d;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+.area-accordion-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b2c4d;
+  color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
-@media (max-width: 1024px) {
-  .areas-grid {
-    grid-template-columns: repeat(2, 1fr);
+.area-accordion-panel {
+  padding: 0 28px 24px;
+  animation: areaPanelIn 0.25s ease;
+}
+
+.area-accordion-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 10px;
+  color: #374151;
+  line-height: 1.55;
+}
+
+@keyframes areaPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
 @media (max-width: 600px) {
-  .areas-grid {
-    grid-template-columns: 1fr;
-  }
-
   .practice-areas {
     padding: 80px 24px;
+  }
+
+  .area-accordion-trigger {
+    padding: 20px;
+  }
+
+  .area-accordion-panel {
+    padding: 0 20px 20px;
   }
 }
