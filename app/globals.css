@@ -12,7 +12,7 @@
 
 .hero-content {
   width: 100%;
-  max-width: 760px;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -21,9 +21,9 @@
 }
 
 .hero-logo {
-  width: min(420px, 80vw);
+  width: min(920px, 100%);
   height: auto;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.35));
 }
 
@@ -74,7 +74,7 @@
   }
 
   .hero-logo {
-    width: min(300px, 78vw);
+    width: 100%;
     margin-bottom: 22px;
   }
 }

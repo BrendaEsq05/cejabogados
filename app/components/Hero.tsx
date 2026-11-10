@@ -8,9 +8,10 @@ export default function Hero() {
         <Image
           src="/logo1.png"
           alt="CEJ Abogados"
-          width={480}
-          height={266}
+          width={1200}
+          height={666}
           priority
+          sizes="(max-width: 900px) 100vw, 920px"
           className="hero-logo"
         />
         <h1>Defensa legal con ética, estrategia y resultados</h1>
