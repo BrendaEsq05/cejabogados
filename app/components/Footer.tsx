@@ -30,45 +30,47 @@ export default function Footer() {
         </a>
       )}
 
-      <div className="footer-container">
-        <div className="footer-brand">
-          <strong>{SITE.name}</strong>
-          <p>Defensa legal con ética, estrategia y resultados.</p>
+      {!isContactPage && (
+        <div className="footer-container">
+          <div className="footer-brand">
+            <strong>{SITE.name}</strong>
+            <p>Defensa legal con ética, estrategia y resultados.</p>
+          </div>
+
+          <div className="footer-contact">
+            <h4>Contacto</h4>
+            <p>📍 {SITE.address.line1}</p>
+            <p>{SITE.address.line2}</p>
+            <p>📞 {SITE.phoneDisplay}</p>
+            <p>✉️ {SITE.email}</p>
+            <p>🕒 Lun–Jue 10:00–18:30 · Vie 10:00–14:30</p>
+          </div>
+
+          <div className="footer-socials">
+            <h4>Síguenos</h4>
+
+            <a
+              href={SITE.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <Instagram size={22} />
+              Instagram
+            </a>
+
+            <a
+              href={SITE.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <Linkedin size={22} />
+              LinkedIn
+            </a>
+          </div>
         </div>
-
-        <div className="footer-contact">
-          <h4>Contacto</h4>
-          <p>📍 {SITE.address.line1}</p>
-          <p>{SITE.address.line2}</p>
-          <p>📞 {SITE.phoneDisplay}</p>
-          <p>✉️ {SITE.email}</p>
-          <p>🕒 Lun–Jue 10:00–18:30 · Vie 10:00–14:30</p>
-        </div>
-
-        <div className="footer-socials">
-          <h4>Síguenos</h4>
-
-          <a
-            href={SITE.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <Instagram size={22} />
-            Instagram
-          </a>
-
-          <a
-            href={SITE.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <Linkedin size={22} />
-            LinkedIn
-          </a>
-        </div>
-      </div>
+      )}
 
       <div className="footer-bottom">
         © {new Date().getFullYear()} {SITE.name}. Todos los derechos
