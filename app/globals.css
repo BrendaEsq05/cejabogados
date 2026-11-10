@@ -1106,8 +1106,13 @@
 }
 
 .call-float {
-  background: #4b5563;
-  color: #111827;
+  background: #9ca3af !important;
+  color: #000000 !important;
+  border: 2px solid #e5e7eb;
+}
+
+.call-float svg {
+  display: block;
 }
 
 .whatsapp-float {
