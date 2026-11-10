@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE } from '../lib/site';
@@ -40,6 +43,8 @@ const MEMBERS: Member[] = [
   },
 ];
 
+const ROTATE_MS = 5000;
+
 function initials(name: string) {
   return name
     .split(' ')
@@ -51,6 +56,23 @@ function initials(name: string) {
 }
 
 export default function Team() {
+  const featuredMembers = useMemo(
+    () => MEMBERS.filter((member) => Boolean(member.image)),
+    [],
+  );
+  const [activeIndex, setActiveIndex] = useState(0);
+  const featured = featuredMembers[activeIndex] ?? featuredMembers[0];
+
+  useEffect(() => {
+    if (featuredMembers.length < 2) return;
+
+    const id = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % featuredMembers.length);
+    }, ROTATE_MS);
+
+    return () => window.clearInterval(id);
+  }, [featuredMembers.length]);
+
   return (
     <section className="team">
       <div className="team-header">
@@ -65,27 +87,45 @@ export default function Team() {
           </Link>
         </div>
 
-        <div className="team-featured">
-          <Image
-            src="/heriberto.jpg"
-            alt="Heriberto Morales — CEJ Abogados"
-            width={900}
-            height={900}
-            sizes="(max-width: 900px) 100vw, 420px"
-            className="team-featured-image"
-          />
-          <div className="team-featured-caption">
-            <strong>Heriberto Morales</strong>
-            <span>Amparo y Penal</span>
+        {featured ? (
+          <div className="team-featured" key={featured.name}>
+            <Image
+              src={featured.image!}
+              alt={`${featured.name} — CEJ Abogados`}
+              width={900}
+              height={900}
+              sizes="(max-width: 900px) 100vw, 420px"
+              className="team-featured-image"
+            />
+            <div className="team-featured-caption">
+              <strong>{featured.name}</strong>
+              <span>{featured.areas.join(' · ')}</span>
+            </div>
+
+            {featuredMembers.length > 1 ? (
+              <div className="team-featured-dots" aria-hidden="true">
+                {featuredMembers.map((member, index) => (
+                  <button
+                    key={member.name}
+                    type="button"
+                    className={`team-dot${index === activeIndex ? ' is-active' : ''}`}
+                    aria-label={`Ver a ${member.name}`}
+                    onClick={() => setActiveIndex(index)}
+                  />
+                ))}
+              </div>
+            ) : null}
           </div>
-        </div>
+        ) : null}
       </div>
 
       <div className="team-members">
         {MEMBERS.map((member) => (
           <article
             key={member.name}
-            className={`team-card${member.pending ? ' is-pending' : ''}`}
+            className={`team-card${member.pending ? ' is-pending' : ''}${
+              featured?.name === member.name ? ' is-featured' : ''
+            }`}
           >
             <div className="team-avatar">
               {member.image ? (
