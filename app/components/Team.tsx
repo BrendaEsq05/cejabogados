@@ -8,9 +8,9 @@ import { SITE } from '../lib/site';
 type Member = {
   name: string;
   areas: string[];
+  services?: string[];
   image?: string;
   href?: string;
-  pending?: boolean;
 };
 
 const MEMBERS: Member[] = [
@@ -39,8 +39,14 @@ const MEMBERS: Member[] = [
   },
   {
     name: 'Diana Jáquez',
-    areas: ['Pendiente'],
-    pending: true,
+    areas: ['Penal', 'Familiar', 'Documentos jurídicos'],
+    services: [
+      'Asesoría y acompañamiento en asuntos penales',
+      'Atención de asuntos familiares',
+      'Elaboración y revisión de documentos jurídicos',
+      'Gestión, integración y seguimiento de documentación',
+      'Acompañamiento en trámites notariales y administrativos',
+    ],
     image: '/diana.jpg',
     href: 'https://www.linkedin.com/in/ma-diana-jacquez-47558719a/',
   },
@@ -126,9 +132,9 @@ export default function Team() {
         {MEMBERS.map((member) => (
           <article
             key={member.name}
-            className={`team-card${member.pending ? ' is-pending' : ''}${
+            className={`team-card${
               featured?.name === member.name ? ' is-featured' : ''
-            }`}
+            }${member.services ? ' has-services' : ''}`}
           >
             <div className="team-avatar">
               {member.image ? (
@@ -150,6 +156,13 @@ export default function Team() {
                   <span key={area}>{area}</span>
                 ))}
               </div>
+              {member.services ? (
+                <ul className="team-services">
+                  {member.services.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
+              ) : null}
               {member.href ? (
                 <a
                   href={member.href}
