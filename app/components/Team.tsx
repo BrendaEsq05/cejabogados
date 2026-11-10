@@ -41,6 +41,7 @@ const MEMBERS: Member[] = [
     name: 'Diana Jáquez',
     areas: ['Pendiente'],
     pending: true,
+    image: '/diana.jpg',
     href: 'https://www.linkedin.com/in/ma-diana-jacquez-47558719a/',
   },
 ];
