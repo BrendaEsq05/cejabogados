@@ -2,73 +2,122 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SITE } from '../lib/site';
 
-const MEMBERS = [
+type Member = {
+  name: string;
+  areas: string[];
+  image?: string;
+  href?: string;
+  pending?: boolean;
+};
+
+const MEMBERS: Member[] = [
   {
-    name: 'Luis Heriberto Morales Ruiz',
-    role: 'Abogado',
-    focus: 'Estrategia jurídica y atención integral de casos',
+    name: 'Heriberto Morales',
+    areas: ['Amparo', 'Penal'],
+    image: '/heriberto.jpg',
     href: SITE.social.linkedin,
   },
   {
-    name: 'Equipo CEJ',
-    role: 'Derecho Familiar',
-    focus: 'Divorcio, pensión alimenticia y custodia',
+    name: 'Noé Naranjo',
+    areas: ['Periciales', 'Penal', 'Contables'],
   },
   {
-    name: 'Equipo CEJ',
-    role: 'Derecho Penal',
-    focus: 'Defensa y acompañamiento procesal',
+    name: 'José García',
+    areas: ['Penal'],
   },
   {
-    name: 'Equipo CEJ',
-    role: 'Derecho Civil y Laboral',
-    focus: 'Contratos, patrimonio y relaciones de trabajo',
+    name: 'Silvia Montejano',
+    areas: ['Laboral', 'Civil'],
+  },
+  {
+    name: 'Karina Fernández',
+    areas: ['Guarda y custodia', 'Divorcios'],
+  },
+  {
+    name: 'Diana Jáquez',
+    areas: ['Pendiente'],
+    pending: true,
   },
 ];
+
+function initials(name: string) {
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
+}
 
 export default function Team() {
   return (
     <section className="team">
-      <div className="team-inner">
+      <div className="team-header">
         <div className="team-copy">
           <h2>Nuestro equipo</h2>
           <p>
-            En CEJ Abogados trabajamos con cercanía y criterio: escuchamos tu
-            caso, te explicamos las opciones con claridad y armamos una
-            estrategia jurídica seria desde el primer encuentro.
+            Abogados y especialistas que acompañan cada caso con criterio,
+            cercanía y una estrategia clara desde el primer encuentro.
           </p>
           <Link href="/cita" className="cta-button">
-            Conoce cómo te podemos ayudar
+            Agenda tu consulta
           </Link>
         </div>
 
-        <div className="team-image">
+        <div className="team-featured">
           <Image
-            src="/equipo.jpg"
-            alt="Equipo de CEJ Abogados"
-            width={968}
-            height={716}
-            sizes="(max-width: 900px) 100vw, 50vw"
+            src="/heriberto.jpg"
+            alt="Heriberto Morales — CEJ Abogados"
+            width={900}
+            height={900}
+            sizes="(max-width: 900px) 100vw, 420px"
+            className="team-featured-image"
           />
+          <div className="team-featured-caption">
+            <strong>Heriberto Morales</strong>
+            <span>Amparo y Penal</span>
+          </div>
         </div>
       </div>
 
       <div className="team-members">
         {MEMBERS.map((member) => (
-          <article key={`${member.name}-${member.role}`} className="team-card">
-            <h3>{member.name}</h3>
-            <p className="team-role">{member.role}</p>
-            <p>{member.focus}</p>
-            {member.href ? (
-              <a
-                href={member.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="team-link"
-              >
-                Ver perfil
-              </a>
-            ) : null}
+          <article
+            key={member.name}
+            className={`team-card${member.pending ? ' is-pending' : ''}`}
+          >
+            <div className="team-avatar">
+              {member.image ? (
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={96}
+                  height={96}
+                />
+              ) : (
+                <span aria-hidden="true">{initials(member.name)}</span>
+              )}
+            </div>
+
+            <div className="team-card-body">
+              <h3>{member.name}</h3>
+              <div className="team-tags">
+                {member.areas.map((area) => (
+                  <span key={area}>{area}</span>
+                ))}
+              </div>
+              {member.href ? (
+                <a
+                  href={member.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="team-link"
+                >
+                  Ver perfil
+                </a>
+              ) : null}
+            </div>
           </article>
         ))}
       </div>
