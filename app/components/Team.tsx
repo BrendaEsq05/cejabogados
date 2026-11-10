@@ -35,11 +35,13 @@ const MEMBERS: Member[] = [
   {
     name: 'Karina Fernández',
     areas: ['Guarda y custodia', 'Divorcios'],
+    image: '/karina.jpg',
   },
   {
     name: 'Diana Jáquez',
     areas: ['Pendiente'],
     pending: true,
+    href: 'https://www.linkedin.com/in/ma-diana-jacquez-47558719a/',
   },
 ];
 
