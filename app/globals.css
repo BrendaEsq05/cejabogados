@@ -1205,14 +1205,17 @@
 
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
   animation: fadeInUp 0.8s ease forwards;
 }
 
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -1221,33 +1224,21 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   display: flex;
-  align-items: center;        /* 🔥 siempre centrado vertical */
-  justify-content: center;    /* centrado horizontal */
-  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
 }
-
 
 .modal-content {
   background: #fff;
-  max-width: 900px;
-  width: 90%;
+  width: min(900px, 100%);
   max-height: 85vh;
+  overflow-y: auto;
   padding: 3rem;
   border-radius: 20px;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.25);
-}
-
-.modal-content {
-  background: #fff;
-  width: 90%;
-  max-width: 900px;
-  max-height: 85vh;           /* 🔥 límite de altura */
-  overflow-y: auto;           
-  padding: 3rem;
-  border-radius: 20px;
-  position: relative;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
 }
 
 .modal-content .close {
