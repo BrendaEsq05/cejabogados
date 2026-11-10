@@ -1270,18 +1270,24 @@
 .practice-areas {
   padding: 100px 80px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .practice-areas h2 {
   font-size: 40px;
   color: #0b2c4d;
   margin-bottom: 60px;
+  text-align: center;
+  width: 100%;
 }
 
 .areas-accordion {
   display: grid;
   gap: 16px;
-  max-width: 960px;
+  width: min(960px, 100%);
+  margin: 0 auto;
 }
 
 .area-accordion-item {
